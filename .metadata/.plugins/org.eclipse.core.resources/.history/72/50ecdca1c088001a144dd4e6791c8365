@@ -1,0 +1,40 @@
+package proz.calc;
+
+import jdk.jshell.JShell;
+
+public class Calc {
+	
+	private static final jdk.jshell.JShell js = JShell.create();
+	
+	private final ICalc iMul = (x, y) -> evaluate(String.valueOf(x) + '*' + String.valueOf(y));
+	
+	private static final ICalc iAdd = (x, y) -> evaluate(String.valueOf(x) + '+' + String.valueOf(y));
+	
+
+	private static double evaluate(String s) {
+
+		try(js){
+			return 
+			js.eval(s)
+				.stream()
+				.filter(e -> e.causeSnippet() == null)
+				.filter(e -> e.status() == jdk.jshell.Snippet.Status.VALID)
+				.mapToDouble(e -> Double.valueOf(e.value()))
+				.sum();
+		}
+		
+	}
+	
+	public ICalc getAdder() { return iAdd; }
+	
+	public interface ICalc{
+		double calc(double x, double y);
+	}
+	
+	
+	
+	
+	static public double add(double x, double y) {
+		return x + y;
+	}
+}

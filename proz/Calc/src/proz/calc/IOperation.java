@@ -1,0 +1,6 @@
+package proz.calc;
+
+public interface IOperation {
+
+	public double calc(double x, double y);
+}

@@ -1,0 +1,33 @@
+package proz.calc;
+
+import jdk.jshell.JShell;
+
+public class Calc {
+	
+	private jdk.jshell.JShell js = JShell.create();
+	
+	private double evaluate(String s) {
+		String result;
+		try(js){
+			js.eval(s)
+				.stream()
+				.filter(e -> e.causeSnippet() == null)
+				.forEach(e -> { result = e.value();  });				
+			}
+		return Double.valueOf(result);
+		}
+		
+	}
+	
+	
+	public interface ICalc{
+		double calc(double x, double y);
+	}
+	
+	
+	
+	
+	static public double add(double x, double y) {
+		return x + y;
+	}
+}

@@ -1,0 +1,8 @@
+package proz.calc;
+
+public interface ICalculator {
+	
+	public double add(double x, double y);
+	
+	public double sub(double x, double y);
+}

@@ -1,0 +1,14 @@
+package proz.calc;
+
+public class Calc {
+	jdk.jshell.JShell js;
+	
+	static public double add(double x, double y) {
+		return x + y;
+	}
+	
+	public interface ICalc{
+		double calc(double x, double y);
+		
+	}
+}

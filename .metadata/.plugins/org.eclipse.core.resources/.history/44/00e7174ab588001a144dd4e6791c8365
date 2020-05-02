@@ -1,0 +1,16 @@
+import jdk.jshell.*;
+
+package proz.calc;
+
+public class Calc {
+	JShell ;
+	
+	static public double add(double x, double y) {
+		return x + y;
+	}
+	
+	public interface ICalc{
+		double calc(double x, double y);
+		
+	}
+}

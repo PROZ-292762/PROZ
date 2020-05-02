@@ -1,0 +1,146 @@
+package proz.calcapp;
+
+import javafx.application.Application;
+import javafx.scene.control.Label;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class CalcApp extends Application {
+	
+	private String argument = "0";
+	
+	@FXML
+	private Label lblDisplay; 
+	
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		 Parent root = FXMLLoader.load(getClass().getResource("kalkulator.fxml"));
+	        primaryStage.setTitle("Kalkulator");
+	        primaryStage.setScene(new Scene(root, 400, 500));
+	        
+	        primaryStage.show();
+
+	}
+	
+	public void btnAc_Clicked() {
+		System.out.println("dziala");
+		argument = "0";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnZero_Clicked() {
+		if(argument != "0")
+		argument += "0";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnOne_Clicked() {
+		if(argument != "0") argument += "1";
+		else argument = "1";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnTwo_Clicked() {
+		if(argument != "0") argument += "2";
+		else argument = "2";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnThree_Clicked() {
+		if(argument != "0") argument += "3";
+		else argument = "3";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnFour_Clicked() {
+		if(argument != "0") argument += "4";
+		else argument = "4";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnFive_Clicked() {
+		if(argument != "0") argument += "5";
+		else argument = "5";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnSix_Clicked() {
+		if(argument != "0") argument += "6";
+		else argument = "6";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnSeven_Clicked() {
+		if(argument != "0") argument += "7";
+		else argument = "7";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnEight_Clicked() {
+		if(argument != "0") argument += "8";
+		else argument = "8";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnNine_Clicked() {
+		if(argument != "0") argument += "9";
+		else argument = "9";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnNeg_Clicked() {
+		if(!(argument.startsWith("-") && argument == "0")) argument = "-" + argument;
+		else argument = argument.substring(1);
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnFact_Clicked() {
+		
+	}
+	
+	public void btnDiv_Clicked() {
+		
+	}
+	
+	public void btnSqrt_Clicked() {
+		
+	}
+	
+	public void btnMul_Clicked() {
+		
+	}
+	
+	public void btnPow_Clicked() {
+		
+	}
+	
+	public void btnSub_Clicked() {
+		
+	}
+	
+	public void btnAdd_Clicked() {
+		
+	}
+	
+	public void btnRes_Clicked() {
+		
+	}
+	public void btnDec_Clicked() {
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			proz.calc.Calc s = new proz.calc.Calc();
+			
+			Runtime.Version version = Runtime.version();
+			System.out.println(version.feature() + "." + version.interim() + "." + version.update() + "." + version.patch());
+			System.out.println(s.add(3., 2.));
+			launch(args);
+			
+			
+	}
+
+}

@@ -1,0 +1,7 @@
+package proz.calc;
+
+public class Calc {
+	public double add(double x, double y) {
+		
+	}
+}

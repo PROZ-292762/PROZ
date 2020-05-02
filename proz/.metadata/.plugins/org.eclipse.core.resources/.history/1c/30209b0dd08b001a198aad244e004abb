@@ -1,0 +1,11 @@
+module proz.calcapp {
+	requires proz.calc;
+	requires javafx.graphics;
+	requires javafx.fxml;
+	requires javafx.controls;
+	
+	
+	exports proz.calcapp;
+	opens proz.calcapp to javafx.fxml;
+	
+}

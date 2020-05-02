@@ -1,0 +1,369 @@
+package proz.calcapp;
+
+import javafx.application.Application;
+import javafx.scene.control.Label;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import proz.calc.Calc.ICalc;
+import proz.calc.Calc;
+
+public class CalcApp extends Application {
+	
+	private String argument = "0";
+	private String prevOperation = "";
+	private String argument0= "0";
+	private double x, y, s;
+	ICalc prevOper = null;
+	
+	@FXML
+	private Label lblDisplay; 
+	
+	
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		 Parent root = FXMLLoader.load(getClass().getResource("kalkulator.fxml"));
+	        primaryStage.setTitle("Kalkulator");
+	        primaryStage.setScene(new Scene(root, 400, 500));
+	        
+	        primaryStage.show();
+
+	}
+	
+	public void btnAc_Clicked() {
+		System.out.println("dziala");
+		argument = "0";
+		argument0 = "0";
+		prevOperation = "";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnZero_Clicked() {
+		if(argument != "0")
+		argument += "0";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnOne_Clicked() {
+		if(argument != "0") argument += "1";
+		else argument = "1";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnTwo_Clicked() {
+		if(argument != "0") argument += "2";
+		else argument = "2";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnThree_Clicked() {
+		if(argument != "0") argument += "3";
+		else argument = "3";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnFour_Clicked() {
+		if(argument != "0") argument += "4";
+		else argument = "4";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnFive_Clicked() {
+		if(argument != "0") argument += "5";
+		else argument = "5";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnSix_Clicked() {
+		if(argument != "0") argument += "6";
+		else argument = "6";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnSeven_Clicked() {
+		if(argument != "0") argument += "7";
+		else argument = "7";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnEight_Clicked() {
+		if(argument != "0") argument += "8";
+		else argument = "8";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnNine_Clicked() {
+		if(argument != "0") argument += "9";
+		else argument = "9";
+		lblDisplay.setText(argument);
+	}
+	
+	public void btnNeg_Clicked() {
+		if(argument.startsWith("-")) argument = argument.substring(1);
+		else if(argument != "0") { 
+				if(argument != "")argument = "-" + argument;
+				else argument = "0";
+		}
+			lblDisplay.setText(argument);
+		
+		//else argument = "-";
+		
+	}
+	
+	public void btnFact_Clicked() {
+		
+	}
+	
+	public void btnDiv_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "/":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "-":
+				btnSub_Clicked();
+				break;
+			case "X":
+				btnMul_Clicked();
+				break;
+			case "+":
+				btnAdd_Clicked();
+				break;
+			case "x^y":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "/";
+	}
+	
+	public void btnSqrt_Clicked() {
+		
+	}
+	
+	public void btnMul_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "X":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "-":
+				btnSub_Clicked();
+				break;
+			case "/":
+				btnMul_Clicked();
+				break;
+			case "+":
+				btnAdd_Clicked();
+				break;
+			case "x^y":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "X";
+	}
+		
+	
+	public void btnPow_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "x^y":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "-":
+				btnSub_Clicked();
+				break;
+			case "X":
+				btnMul_Clicked();
+				break;
+			case "+":
+				btnAdd_Clicked();
+				break;
+			case "/":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "x^y";
+	}
+	
+	public void btnSub_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "-":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "/":
+				btnSub_Clicked();
+				break;
+			case "X":
+				btnMul_Clicked();
+				break;
+			case "+":
+				btnAdd_Clicked();
+				break;
+			case "x^y":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "-";
+	}
+	
+
+	public void btnAdd_Clicked() {
+		if (prevOper != null ) {
+			argument0 = String.valueOf(prevOper.calc(Double.valueOf(argument0),Double.valueOf(argument)));
+			prevOper = Calc.getAdder();
+		}
+	}
+	public void btnAddorg_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "+":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "-":
+				btnSub_Clicked();
+				break;
+			case "X":
+				btnMul_Clicked();
+				break;
+			case "/":
+				btnDiv_Clicked();
+				break;
+			case "x^y":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "+";
+	}
+	
+	public void btnRes_Clicked() {
+		if(prevOperation != "") {
+			x = Double.valueOf(argument0);
+			y = Double.valueOf(argument);
+			switch(prevOperation) {
+			case "/":
+				s = (proz.calc.Calc.add(x, y));
+				//if ((s % 1) == 0) { 
+					argument  = Double.toString(s);
+					
+				//}
+				lblDisplay.setText(argument);
+				break;
+			case "-":
+				btnSub_Clicked();
+				break;
+			case "X":
+				btnMul_Clicked();
+				break;
+			case "+":
+				btnAdd_Clicked();
+				break;
+			case "x^y":
+				btnPow_Clicked();
+				break;
+			
+			}
+		}
+		else {
+			//lblDisplay.setText(argument);
+			
+		}
+		argument0 = argument;
+		argument = "0";
+		prevOperation = "=";
+	}
+	public void btnDec_Clicked() {
+		if(argument.indexOf(".") == -1) argument += ".";
+		lblDisplay.setText(argument);
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			proz.calc.Calc s = new proz.calc.Calc();
+			
+			Runtime.Version version = Runtime.version();
+			System.out.println(version.feature() + "." + version.interim() + "." + version.update() + "." + version.patch());
+			System.out.println(s.add(3., 2.));
+			launch(args);
+			
+			
+	}
+
+}

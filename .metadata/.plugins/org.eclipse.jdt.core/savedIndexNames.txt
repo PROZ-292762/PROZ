@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+/home/alis/Desktop/ADEK/PROZ/.metadata/.plugins/org.eclipse.jdt.core
+1492389189.index
+2282500372.index
