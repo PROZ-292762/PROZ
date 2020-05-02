@@ -17,20 +17,17 @@ import proz.calc.ICalculator;
 public class CalcApp extends Application {
 	
 	private String argument = "0";
-	private String prevOperation = "";
-	private String argument0= "0";
-	private double x, y, s;
+	private String argument0 = "0";
 	private ICalculator calc;
 	IOperation prevOper = null;
-	
+
 	@FXML
-	private Label lblDisplay; 
+	private Label lblDisplay;
 	
 	private String evaluateAndCatch() {
 		try {
-			return String.valueOf(prevOper.calc(Double.valueOf(argument0),Double.valueOf(argument)));
-		}
-		catch(Exception e) {
+			return String.valueOf(prevOper.calc(Double.valueOf(argument0), Double.valueOf(argument)));
+		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Blad obliczen");
 			alert.setHeaderText(null);
@@ -66,7 +63,7 @@ public class CalcApp extends Application {
 		System.out.println("dziala");
 		argument = "0";
 		argument0 = "0";
-		prevOperation = "";
+		prevOper = null;
 		lblDisplay.setText(argument);
 	}
 	
