@@ -1,0 +1,346 @@
+package proz.calcapp;
+
+import javafx.application.Application;
+import javafx.scene.control.Label;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import proz.calc.IOperation;
+import proz.calc.Calc;
+import proz.calc.ICalculator;
+
+/**
+ * Klasa CalcApp odpowiadająca za interakcję z użytkownikiem oraz przekazywanie parametrów do klasy Calc
+ * 
+ * @author Adam Okrasinski / A.Okrasinski@stud.elka.pw.edu.pl
+ */
+public class CalcApp extends Application {
+
+	private String argument = "0";
+	private String argument0 = "0"; //czy setter, bo ma być bo ustawione?
+	private ICalculator calc;
+	IOperation prevOper = null;
+
+	@FXML
+	private Label lblDisplay;
+
+/**
+ * Metoda tworząca obiekt klasy Calc
+ */
+	public CalcApp() {
+		calc = new Calc();
+	}
+	/**
+	 * Metoda evaluateAndCatch wykonuje obliczenia poprzez wywołanie interfejsu IOperation z odpowiednimi argumentami
+	 * @return wynik zleconych przez użytkownika obliczeń
+	 * @exception nazwa_WYJĄTKU wyjątek zgłaszany jest, gdy silnik obliczeniowy nie wie jak wykonać 
+	 * daną operację z podanymi argumentami, wtedy zwracane jest "0"
+	 */
+	private String evaluateAndCatch() {
+		try {
+			return String.valueOf(prevOper.calc(Double.valueOf(argument0), Double.valueOf(argument)));
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Blad obliczen");
+			alert.setHeaderText(null);
+			alert.setContentText(e.toString() + e.getMessage());
+			alert.showAndWait();
+			argument0 = "0";
+			argument = "0";
+			prevOper = null;
+			return "0";
+		}
+	}
+	
+	/**
+	 * 
+	 * @param c
+	 */
+	public void setCalc(ICalculator c) {
+		calc = c;
+	}
+
+	/**
+	 * Metoda start wyświetla interfejs graficzny na podstawie pliku .fxml
+	 * @param primaryStage jest obiektem typu Stage, który będzie oknem graficznym dla interfejsu
+	 */
+	public void start(Stage primaryStage) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("kalkulator.fxml"));
+		primaryStage.setTitle("Kalkulator");
+		primaryStage.setScene(new Scene(root, 500, 500));
+		primaryStage.show();
+	}
+	
+	/**
+	 * metoda btnAc_Clicked jest wywoływana przy naciśnięciu na przycisk "AC"
+	 * zeruje argumenty oraz zadane wcześniej operacje
+	 */
+	public void btnAc_Clicked() {
+		argument = "0";
+		argument0 = "0";
+		prevOper = null;
+		lblDisplay.setText(argument);
+	}
+	
+	/**
+	 * metoda btnZero_Clicked jest wywoływana przy naciśnięciu na przycisk "0"
+	 * na końcu podawanego do tej argumentu dopisywane jest "0"
+	 */
+	public void btnZero_Clicked() {
+		if (argument != "0")
+			argument += "0";
+		lblDisplay.setText(argument);
+	}
+	
+	/**
+	 * metoda btnOne_Clicked jest wywoływana przy naciśnięciu na przycisk "1"
+	 * na końcu podawanego do tej argumentu dopisywane jest "1"
+	 */
+	public void btnOne_Clicked() {
+		if (argument != "0")
+			argument += "1";
+		else
+			argument = "1";
+		lblDisplay.setText(argument);
+	}
+	
+	/**
+	 * metoda btnTwo_Clicked jest wywoływana przy naciśnięciu na przycisk "2"
+	 * na końcu podawanego do tej argumentu dopisywane jest "2"
+	 */
+	public void btnTwo_Clicked() {
+		if (argument != "0")
+			argument += "2";
+		else
+			argument = "2";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnThree_Clicked jest wywoływana przy naciśnięciu na przycisk "3"
+	 * na końcu podawanego do tej argumentu dopisywane jest "3"
+	 */
+	public void btnThree_Clicked() {
+		if (argument != "0")
+			argument += "3";
+		else
+			argument = "3";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnFour_Clicked jest wywoływana przy naciśnięciu na przycisk "4"
+	 * na końcu podawanego do tej argumentu dopisywane jest "4"
+	 */
+	public void btnFour_Clicked() {
+		if (argument != "0")
+			argument += "4";
+		else
+			argument = "4";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnFive_Clicked jest wywoływana przy naciśnięciu na przycisk "5"
+	 * na końcu podawanego do tej argumentu dopisywane jest "5"
+	 */
+	public void btnFive_Clicked() {
+		if (argument != "0")
+			argument += "5";
+		else
+			argument = "5";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnSix_Clicked jest wywoływana przy naciśnięciu na przycisk "6"
+	 * na końcu podawanego do tej argumentu dopisywane jest "6"
+	 */
+	public void btnSix_Clicked() {
+		if (argument != "0")
+			argument += "6";
+		else
+			argument = "6";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnSeven_Clicked jest wywoływana przy naciśnięciu na przycisk "7"
+	 * na końcu podawanego do tej argumentu dopisywane jest "7"
+	 */
+	public void btnSeven_Clicked() {
+		if (argument != "0")
+			argument += "7";
+		else
+			argument = "7";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnEight_Clicked jest wywoływana przy naciśnięciu na przycisk "8"
+	 * na końcu podawanego do tej argumentu dopisywane jest "8"
+	 */
+	public void btnEight_Clicked() {
+		if (argument != "0")
+			argument += "8";
+		else
+			argument = "8";
+		lblDisplay.setText(argument);
+	}
+
+	/**
+	 * metoda btnNine_Clicked jest wywoływana przy naciśnięciu na przycisk "9"
+	 * na końcu podawanego do tej argumentu dopisywane jest "9"
+	 */
+	public void btnNine_Clicked() {
+		if (argument != "0")
+			argument += "9";
+		else
+			argument = "9";
+		lblDisplay.setText(argument);
+	}
+	
+	/**
+	 * metoda btnNeg_Clicked jest wywoływana przy naciśnięciu na przycisk "+/-"
+	 * podawany do tej pory argument zostaje zanegowany 
+	 */
+	public void btnNeg_Clicked() {
+		if (argument.startsWith("-"))
+			argument = argument.substring(1);
+		else if (argument != "0") {
+			if (argument != "")
+				argument = "-" + argument;
+			else
+				argument = "0";
+		}
+		lblDisplay.setText(argument);
+	}
+	
+	/**
+	 * metoda btnMod_Clicked jest wywoływana przy naciśnięciu na przycisk "mod"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie modulo
+	 */
+	public void btnMod_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.mod(x, y);
+		lblDisplay.setText(argument0);
+	}
+	
+	/**
+	 * metoda btnLog_Clicked jest wywoływana przy naciśnięciu na przycisk "log"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie logarytm
+	 */
+	public void btnLog_Clicked() {
+
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.log(x, y);
+		lblDisplay.setText(argument0);
+	}
+
+	/**
+	 * metoda btnAdd_Clicked jest wywoływana przy naciśnięciu na przycisk "+"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie dodawanie
+	 */
+	public void btnAdd_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.add(x, y);
+		lblDisplay.setText(argument0);
+	}
+	
+	/**
+	 * metoda btnSub_Clicked jest wywoływana przy naciśnięciu na przycisk "-"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie odejmowanie
+	 */
+	public void btnSub_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.sub(x, y);
+		lblDisplay.setText(argument0);
+	}
+	
+	/**
+	 * metoda btnDiv_Clicked jest wywoływana przy naciśnięciu na przycisk "/"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie dzielenie
+	 */
+	public void btnDiv_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.div(x, y);
+		lblDisplay.setText(argument0);
+	}
+
+	/**
+	 * metoda btnMul_Clicked jest wywoływana przy naciśnięciu na przycisk "x"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie mnożenie
+	 */
+	public void btnMul_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.mul(x, y);
+		lblDisplay.setText(argument0);
+	}
+
+	/**
+	 * metoda btnPow_Clicked jest wywoływana przy naciśnięciu na przycisk "x^y"
+	 * operacją, która zostanie wykonana po podaniu drugiego argumentu, będzie potęgowanie
+	 */
+	public void btnPow_Clicked() {
+		if (prevOper != null)
+			argument0 = evaluateAndCatch();
+		else
+			argument0 = argument;
+		argument = "0";
+		prevOper = (x, y) -> calc.pow(x, y);
+		lblDisplay.setText(argument0);
+	}
+
+	/**
+	 * metoda btnRes_Clicked jest wywoływana przy naciśnięciu na przycisk "="
+	 * jeśli zostały podane dwa argumenty oraz rodzaj operacji, ta operacja zostaje wykonana
+	 */
+	public void btnRes_Clicked() {
+		argument0 = evaluateAndCatch();
+		prevOper = null;
+		lblDisplay.setText(argument0);
+	}
+	
+	/**
+	 * metoda btnDec_Clicked jest wywoływana przy naciśnięciu na przycisk "."
+	 * do aktualnie podanego argumentu zostaje dopisany znak "."
+	 */
+	public void btnDec_Clicked() {
+		if (argument.indexOf(".") == -1)
+			argument += ".";
+		lblDisplay.setText(argument);
+	}
+
+	public static void main(String[] args) {
+		proz.calc.Calc s = new proz.calc.Calc();
+		//launch(args);
+	}
+}

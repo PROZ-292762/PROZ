@@ -1,0 +1,6 @@
+module proz.calc {
+	requires jdk.jshell;
+	
+//	exports proz.calc;
+	exports proz.calc to proz.calcapp;
+}
